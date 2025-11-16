@@ -1,0 +1,43 @@
+#!/bin/bash
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root."
+  exit
+fi
+
+countryCode=$1
+
+if [ "$1" = "d" ]; then
+  if [ "$(wg)" = "" ]; then
+    echo "No connection to drop."
+    exit
+  else
+    while [ "$(wg)" != "" ]
+    do
+      currentConn=$(sudo wg | sed 's/ /\n/g' | head -n 2 | tail -n 1)
+      wg-quick down /etc/wireguard/$currentConn.conf
+    done
+    exit
+  fi
+else
+  if [ "$#" -eq 0 ]; then
+    if [ "$(wg)" != "" ]; then
+     sudo /usr/bin/vpn-connect d
+    fi
+    echo " "
+    echo "Connecting to random server"
+    echo " "
+    randomFile=$(sudo ls /etc/wireguard/ | sort -R | tail -n 1)
+    wg-quick up /etc/wireguard/$randomFile
+    exit 
+  fi
+fi
+
+if [ "$(wg)" != "" ]; then
+  sudo /usr/bin/vpn-connect d
+fi
+echo " "
+echo "Connecting to server in $countryCode"
+echo " "
+randomFile=$(sudo ls /etc/wireguard/ | grep $countryCode | sort -R | tail -n 1)
+wg-quick up /etc/wireguard/$randomFile
+
