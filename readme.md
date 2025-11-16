@@ -9,6 +9,10 @@ I recommend adding the following to your bashrc:
 since you don't have to type out the whole thing every time!
 The example usage below will reflect using that terminology.
 
+Setup:
+
+Just put this file in /usr/bin/
+
 Usage:
 
 `vpn`       -  connects using a random file in /etc/wireguard
