@@ -18,6 +18,13 @@ if [ "$1" = "d" ]; then
     done
     exit
   fi
+elif [ "$1" = "s" ]; then
+  if [ "$(wg)" = "" ]; then
+    echo "VPN not connected."
+    exit
+  fi
+  sudo wg
+  exit
 else
   if [ "$#" -eq 0 ]; then
     if [ "$(wg)" != "" ]; then
