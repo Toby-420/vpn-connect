@@ -22,7 +22,7 @@ Just put this file in /usr/bin/
 
 `vpn XX`    -  connects to a random file starting with XX (useful if yours start with country codes).
 
-`vpn d`     -  _d_isconnect from all connected vpns (also works if you accidentally connected to 2 at once).
+`vpn d`     -  disconnect from all connected vpns (also works if you accidentally connected to 2 at once).
 
-`vpn s`     - _s_tatus of current VPN connection. Currently just outputs sudo wg, this will be changed in the future to be more informative.
+`vpn s`     - status of current VPN connection. Currently just outputs sudo wg, this will be changed in the future to be more informative.
 Hopefully you find this script useful!
