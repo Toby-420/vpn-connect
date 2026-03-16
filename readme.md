@@ -20,6 +20,8 @@ Just put whichever file you want in /usr/bin/
 
 Since it uses wireguard, you'll need [wireguard-tools](https://github.com/WireGuard/wireguard-tools).
 
+You'll also need resolvconf. On Arch Linux, you can install systemd-resolvconf.
+
 vpn-connect is just a bash script so you just need bash.
 
 I recommend using vpn-connect.rb though since it doesn't parse ls. You'll just need [Ruby](https://ruby-lang.org) for this.
